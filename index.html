@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ready for Work — MS Office skills for the workplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf9f6;
+    --accent: #2c5f2d;
+    --accent-light: #e8f0e8;
+    --warm: #f5f0e8;
+    --mid: #6b6b6b;
+    --border: #e0ddd6;
+    --radius: 6px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 249, 246, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex; align-items: center;
+    text-decoration: none;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.5rem 1.4rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 7rem 2rem 4rem;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    max-width: 720px;
+    margin-bottom: 1.6rem;
+  }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--mid);
+    max-width: 560px;
+    margin-bottom: 2.4rem;
+    line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: #234d24; transform: translateY(-1px); }
+  .btn-secondary {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.9rem 1.6rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--ink); }
+
+  .hero-proof {
+    margin-top: 3rem;
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+  }
+  .proof-item {
+    font-size: 0.85rem;
+    color: var(--mid);
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .proof-item svg { flex-shrink: 0; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1080px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    color: var(--mid);
+    max-width: 580px;
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+
+  /* ── WHAT'S INSIDE ── */
+  .whats-inside { background: var(--warm); }
+  .files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .file-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: border-color 0.2s;
+  }
+  .file-card:hover { border-color: var(--accent); }
+  .file-icon {
+    width: 44px; height: 44px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.03em;
+  }
+  .file-icon.excel { background: #e8f5e9; color: #1b5e20; }
+  .file-icon.word { background: #e3f2fd; color: #1565c0; }
+  .file-icon.pptx { background: #fce4ec; color: #c62828; }
+  .file-icon.pdf { background: #fff3e0; color: #e65100; }
+  .file-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+  .file-card p { font-size: 0.92rem; color: var(--mid); line-height: 1.6; }
+  .file-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── SKILLS BREAKDOWN ── */
+  .skills-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+  }
+  .skill-col h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--accent);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .skill-col ul {
+    list-style: none;
+    padding: 0;
+  }
+  .skill-col li {
+    padding: 0.55rem 0;
+    font-size: 0.93rem;
+    color: var(--mid);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 0.5rem;
+  }
+  .skill-col li:last-child { border-bottom: none; }
+  .skill-col li::before {
+    content: '→';
+    color: var(--accent);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* ── WHO IS THIS FOR ── */
+  .audience { background: var(--warm); }
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .audience-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.8rem;
+  }
+  .audience-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.08rem;
+    margin-bottom: 0.5rem;
+  }
+  .audience-card p { font-size: 0.9rem; color: var(--mid); }
+
+  /* ── PRICING ── */
+  .pricing-section { text-align: center; }
+  .price-box {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    padding: 3rem 2.5rem;
+  }
+  .price-box .price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.2rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.3rem;
+  }
+  .price-box .price-note {
+    font-size: 0.9rem;
+    color: var(--mid);
+    margin-bottom: 2rem;
+  }
+  .price-box .checklist {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+  .price-box .checklist li {
+    padding: 0.5rem 0;
+    font-size: 0.93rem;
+    display: flex; align-items: center; gap: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .price-box .checklist li:last-child { border-bottom: none; }
+  .check-icon {
+    width: 18px; height: 18px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .check-icon svg { width: 10px; height: 10px; }
+  .price-box .btn-primary { width: 100%; justify-content: center; font-size: 1.05rem; padding: 1rem; }
+  .guarantee {
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    color: var(--mid);
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-it-works { background: var(--warm); }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    counter-reset: step;
+  }
+  .step {
+    counter-increment: step;
+    padding: 0;
+  }
+  .step::before {
+    content: counter(step);
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.6rem;
+    line-height: 1;
+  }
+  .step h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .step p { font-size: 0.9rem; color: var(--mid); }
+
+  /* ── FAQ ── */
+  .faq-list { max-width: 680px; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 1.4rem 0;
+  }
+  .faq-q {
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    background: none; border: none; width: 100%; text-align: left;
+    font-family: inherit; font-size: inherit; color: inherit;
+    padding: 0;
+  }
+  .faq-q::after { content: '+'; font-size: 1.3rem; color: var(--mid); transition: transform 0.2s; }
+  .faq-item.open .faq-q::after { content: '−'; }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: var(--mid);
+    font-size: 0.93rem;
+    line-height: 1.65;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding-top: 0.8rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--mid);
+  }
+  footer a { color: var(--mid); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    section { padding: 3.5rem 1.4rem; }
+    .hero { padding: 6rem 1.4rem 3rem; }
+    .hero-proof { gap: 1.5rem; }
+    .price-box { padding: 2rem 1.5rem; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Ready for Work</a>
+  <a href="https://buy.stripe.com/eVqeVc0u5a8Obll8E3eAg00" class="nav-cta">Get the toolkit — £10</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Excel · Word · PowerPoint</div>
+  <h1>The MS Office skills they don't teach you at university.</h1>
+  <p class="hero-sub">A practical toolkit of templates, worked examples, and guidance to help you use Excel, Word, and PowerPoint like someone who's been doing it for years.</p>
+  <div class="hero-actions">
+    <a href="https://buy.stripe.com/eVqeVc0u5a8Obll8E3eAg00" class="btn-primary">
+      Get the toolkit — £10
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#whats-inside" class="btn-secondary">See what's included</a>
+  </div>
+  <div class="hero-proof">
+    <div class="proof-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-8" stroke="#2c5f2d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      6 files, ready to use
+    </div>
+    <div class="proof-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-8" stroke="#2c5f2d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Instant delivery to your inbox
+    </div>
+    <div class="proof-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-8" stroke="#2c5f2d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Built from real workplace experience
+    </div>
+  </div>
+</div>
+
+<!-- WHAT'S INSIDE -->
+<section class="whats-inside" id="whats-inside">
+  <div class="container fade-in">
+    <div class="section-label">What's inside</div>
+    <h2 class="section-title">Six files. Everything you need.</h2>
+    <p class="section-desc">You get a complete toolkit delivered as a single file — a guide that walks you through each resource, plus five working files you can open, use, and adapt from day one.</p>
+    <div class="files-grid">
+      <div class="file-card">
+        <div class="file-icon pdf">PDF</div>
+        <h3>The Guide</h3>
+        <p>Your starting point. A clear walkthrough of every file in the toolkit, key takeaways for each application, and how to get the most from the resources.</p>
+        <span class="file-tag">Start here</span>
+      </div>
+      <div class="file-card">
+        <div class="file-icon excel">XLS</div>
+        <h3>Excel — Formulae &amp; Skills</h3>
+        <p>11 tabs covering everything from basic navigation and shortcuts through to XLOOKUP, INDEX-MATCH, pivot tables, and data visualisation. Worked examples throughout.</p>
+        <span class="file-tag">Learn by doing</span>
+      </div>
+      <div class="file-card">
+        <div class="file-icon excel">XLS</div>
+        <h3>Excel — Model Template</h3>
+        <p>A professional Excel model structure with 8 colour-coded tabs: cover page, methodology, assumptions, data, analysis, outputs, and QA checks. Built to workplace standards.</p>
+        <span class="file-tag">Copy &amp; adapt</span>
+      </div>
+      <div class="file-card">
+        <div class="file-icon word">DOC</div>
+        <h3>Word — Professional Documents</h3>
+        <p>Guidance and templates for the three document types you'll write most: reports, briefing notes, and literature reviews. Structure, formatting, and practical advice.</p>
+        <span class="file-tag">Templates included</span>
+      </div>
+      <div class="file-card">
+        <div class="file-icon pptx">PPT</div>
+        <h3>PowerPoint — Slide Decks</h3>
+        <p>How to build text-led slide decks that tell a clear story with data. Structure, layout principles, and what makes a slide deck work as a standalone document.</p>
+        <span class="file-tag">Narrative-driven</span>
+      </div>
+      <div class="file-card">
+        <div class="file-icon pptx">PPT</div>
+        <h3>PowerPoint — Presentations</h3>
+        <p>How to create visual-led slides designed to be presented. Covers slide design, delivery tips, using the notes function, and adapting your message for different audiences.</p>
+        <span class="file-tag">Present with confidence</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS BREAKDOWN -->
+<section id="skills">
+  <div class="container fade-in">
+    <div class="section-label">Skills covered</div>
+    <h2 class="section-title">Practical skills, not theory.</h2>
+    <p class="section-desc">Everything in the toolkit is something you'll actually use at work. No filler.</p>
+    <div class="skills-cols">
+      <div class="skill-col">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="2" stroke="#2c5f2d" stroke-width="1.5"/><path d="M6 7h8M6 10h8M6 13h5" stroke="#2c5f2d" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Excel
+        </h3>
+        <ul>
+          <li>Core functions: SUM, IF, COUNTIF and combinations</li>
+          <li>XLOOKUP, VLOOKUP, and INDEX-MATCH</li>
+          <li>Formatting, colour-coding, and professional layout</li>
+          <li>Pivot tables — how, when, and best practice</li>
+          <li>Charts that suit the data and look right</li>
+          <li>Assumptions tables and named ranges</li>
+          <li>Quality assurance and sense checks</li>
+          <li>Keyboard shortcuts that save real time</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="1.5" stroke="#2c5f2d" stroke-width="1.5"/><path d="M7 6h6M7 9h6M7 12h4" stroke="#2c5f2d" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Word
+        </h3>
+        <ul>
+          <li>Writing with clarity — one idea per paragraph</li>
+          <li>Structuring reports, briefings, and reviews</li>
+          <li>Using heading styles for navigation and contents</li>
+          <li>Tracked changes and professional reviewing</li>
+          <li>Footnotes, references, and cross-referencing</li>
+          <li>Version control and file naming</li>
+          <li>Formatting that looks consistent and polished</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="2" stroke="#2c5f2d" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="#2c5f2d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          PowerPoint
+        </h3>
+        <ul>
+          <li>Slide decks vs presentations — knowing the difference</li>
+          <li>One idea per slide, every time</li>
+          <li>Telling a story with data and visuals</li>
+          <li>Adapting slides for different audiences</li>
+          <li>Delivery tips — don't read from slides</li>
+          <li>Using the notes function and coaching tool</li>
+          <li>Making visuals do the heavy lifting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section class="audience" id="audience">
+  <div class="container fade-in">
+    <div class="section-label">Who it's for</div>
+    <h2 class="section-title">You know the software. This teaches you how it's actually used.</h2>
+    <p class="section-desc">Ready for Work bridges the gap between using MS Office and using it well in a professional setting.</p>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h3>Final-year students</h3>
+        <p>About to start a graduate role and want to hit the ground running with workplace tools from week one.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Recent graduates</h3>
+        <p>Already in post and realising the gap between what you learnt at university and what's expected at work.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Career changers</h3>
+        <p>Moving into a corporate or analytical role and need to get up to speed on professional standards quickly.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Anyone who wants to improve</h3>
+        <p>You use these tools daily but know you could be more efficient, more polished, and more confident.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <div class="container fade-in">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">Pay once. Download. Start using it.</h2>
+    <p class="section-desc">No subscriptions, no upsells, no course to work through. Just practical files you can open and use today.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>Purchase</h3>
+        <p>Enter your email and pay £10. Secure checkout, card and Apple/Google Pay accepted.</p>
+      </div>
+      <div class="step">
+        <h3>Check your inbox</h3>
+        <p>You'll receive your download link within minutes.</p>
+      </div>
+      <div class="step">
+        <h3>Open and explore</h3>
+        <p>Start with the PDF guide, then work through the files at your own pace.</p>
+      </div>
+      <div class="step">
+        <h3>Use it at work</h3>
+        <p>Copy the templates, reference the examples, and build better work from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="container fade-in">
+    <div class="section-label">Get started</div>
+    <h2 class="section-title">One toolkit. One price.</h2>
+    <p class="section-desc" style="margin-left:auto; margin-right:auto;">Everything you need to use MS Office professionally, for less than a round of drinks.</p>
+    <div class="price-box">
+      <div class="price">£10</div>
+      <div class="price-note">One-off payment · Instant delivery</div>
+      <ul class="checklist">
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2.5 2.5L8 3" stroke="#2c5f2d" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          PDF guide with key takeaways for each application
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2.5 2.5L8 3" stroke="#2c5f2d" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Excel formulae workbook — 11 tabs, worked examples
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2.5 2.5L8 3" stroke="#2c5f2d" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Excel model template — professional, colour-coded
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2.5 2.5L8 3" stroke="#2c5f2d" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Word document guide with 3 ready-to-use templates
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2.5 2.5L8 3" stroke="#2c5f2d" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          PowerPoint slide deck guide
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2.5 2.5L8 3" stroke="#2c5f2d" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          PowerPoint presentation guide
+        </li>
+      </ul>
+      <a href="https://buy.stripe.com/eVqeVc0u5a8Obll8E3eAg00" class="btn-primary" id="buy-btn">
+        Buy now — £10
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="guarantee">Delivered instantly to your email.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container fade-in">
+    <div class="section-label">Questions</div>
+    <h2 class="section-title">Frequently asked</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What do I actually get?</button>
+        <div class="faq-a">Six files: a PDF guide, two Excel workbooks (one for formulae and skills, one model template), a Word document guide, and two PowerPoint files (one for slide decks, one for presentations). All are real, working files you can open and use immediately.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How is it delivered?</button>
+        <div class="faq-a">After payment, a download link is sent directly to the email address you provide. It arrives within minutes.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need any specific version of Office?</button>
+        <div class="faq-a">The files work with Microsoft Office 2016 and later, including Microsoft 365. Most features also work in recent versions of Google Sheets, Docs, and Slides, though some Excel-specific functions may differ.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is this a course I need to work through?</button>
+        <div class="faq-a">No. It's a toolkit. You can work through it in order or jump to the parts you need. The PDF guide suggests a path, but there's no schedule or modules to complete. Use what's useful, when it's useful.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is this specific to a particular industry?</button>
+        <div class="faq-a">No. The skills and templates are designed to work across sectors. Whether you're heading into finance, consulting, the civil service, charity work, or anything else that uses MS Office, the content applies.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Ready for Work © 2026. All rights reserved.</p>
+  <p style="margin-top: 0.5rem;"><a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="mailto:hello@readyfor.work">Contact</a></p>
+</footer>
+
+<script>
+  // FAQ toggle
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
